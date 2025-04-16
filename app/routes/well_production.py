@@ -18,10 +18,8 @@ def get_well_data():
         try:
             records = get_well_data_from_db(well_number)
             if records:
-                return make_response(
-                    data=records,
-                    comment="Well data retrieved successfully"
-                )
+                return records
+                
 
             return make_response(
                 data=None,
