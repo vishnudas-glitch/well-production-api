@@ -7,9 +7,9 @@ from app.services.well_service import get_well_data_from_db
 from app.routes.swagger.well_production import GET_WELL_DATA_DOC
 
 logger = logging.getLogger(__name__)
-api_bp = Blueprint('api', __name__)
+well_api_bp = Blueprint('api', __name__)
 
-@api_bp.route('/data', methods=['GET'])
+@well_api_bp.route('/data', methods=['GET'])
 @swag_from(GET_WELL_DATA_DOC)
 def get_well_data():
     well_number = request.args.get('well')
