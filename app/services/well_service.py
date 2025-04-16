@@ -6,6 +6,7 @@ logger = logging.getLogger(__name__)
 
 def get_well_data_from_db(api_number: str) -> Dict:
     try:
+        # keeping connections shortlived avoids locking issues
         db = get_db()
         query = """
             SELECT OIL, GAS, BRINE
