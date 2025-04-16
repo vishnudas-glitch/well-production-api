@@ -10,7 +10,6 @@ from app.routes import routes_bp
 def create_app() -> Flask:
     app = Flask(__name__)
 
-
     configure_logging()
     configure_swagger(app)
 
@@ -44,7 +43,6 @@ def configure_logging() -> None:
 
 
 def configure_swagger(app: Flask) -> None:
-    """Configure Swagger documentation for the app."""
     Swagger(app, template={
         "swagger": "2.0",
         "info": {
