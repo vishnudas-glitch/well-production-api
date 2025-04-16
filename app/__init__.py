@@ -10,6 +10,19 @@ from app.routes import routes_bp
 def create_app() -> Flask:
     app = Flask(__name__)
 
+
+    configure_logging()
+    configure_swagger(app)
+
+    init_app(app)
+    app.register_blueprint(routes_bp)
+
+    return app
+
+
+
+
+def configure_logging() -> None:
     file_handler = logging.FileHandler(settings.LOG_FILE_NAME)
     file_handler.setLevel(logging.ERROR) 
     file_handler.setFormatter(logging.Formatter(
@@ -19,9 +32,19 @@ def create_app() -> Flask:
     logger.handlers = [] 
     logger.setLevel(logging.ERROR)
     logger.addHandler(file_handler)
+    
+    # Add console handler for development environments
+    if settings.DEBUG:
+        console_handler = logging.StreamHandler()
+        console_handler.setLevel(logging.INFO)
+        console_handler.setFormatter(logging.Formatter(
+            '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+        ))
+        logger.addHandler(console_handler)
 
 
-
+def configure_swagger(app: Flask) -> None:
+    """Configure Swagger documentation for the app."""
     Swagger(app, template={
         "swagger": "2.0",
         "info": {
@@ -31,8 +54,3 @@ def create_app() -> Flask:
         },
         "basePath": "/"
     })
-
-    init_app(app)
-    app.register_blueprint(routes_bp)
-
-    return app
