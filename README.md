@@ -51,7 +51,7 @@ A lightweight Flask-based REST API for retrieving well production data (OIL, GAS
 ### 1. Clone the repo
 
 ```bash
-git clone https://github.com/vishnudas-bluefox/well-production-api
+https://github.com/vishnudas-glitch/well-production-api
 cd well-production-api
 ```
 
