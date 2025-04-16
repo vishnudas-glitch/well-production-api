@@ -109,14 +109,23 @@ gunicorn -w 4 -b 0.0.0.0:8080 app:create_app
 
 ## 🧪 API Usage
 
-**GET /data?well=1234567890**
+**GET /data?well=34013206570100**
 
 Returns OIL, GAS, BRINE data for the requested API WELL NUMBER.
 
 📄 Swagger UI:  
-`http://localhost:8080/apidocs/`
+```
+http://localhost:8080/apidocs/
+```
 
----
+### 📦 Quick Test (Without Swagger UI)
+
+You can test the API directly using `curl`:
+
+```bash
+curl -X GET "http://127.0.0.1:8080/data?well=34013206570100" -H "accept: application/json"
+```
+
 
 ## 📦 Response Format
 
@@ -144,3 +153,19 @@ tail -f error.log
 ```
 
 ---
+
+
+
+
+
+
+## 📬 About Me
+
+This repository was developed as part of a technical assessment.
+
+If you're interested in learning more about my background or exploring additional projects, please feel free to connect:
+
+- 🐙 [GitHub (Official)](https://github.com/vishnudas-bluefox)  
+- 💼 [LinkedIn](https://www.linkedin.com/in/vishnudas-bluefox/)  
+- 🌐 [Portfolio](https://vishnudas.netlify.app/)
+
